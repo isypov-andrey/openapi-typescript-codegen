@@ -11,5 +11,5 @@ import { exists } from './fileSystem';
  */
 export const getOpenApiSpec = async (location: string): Promise<any> => {
     const absolutePathOrUrl = (await exists(location)) ? resolve(location) : location;
-    return await RefParser.bundle(absolutePathOrUrl, absolutePathOrUrl, {});
+    return await RefParser.bundle(absolutePathOrUrl, absolutePathOrUrl, { resolve: { http: { timeout: 60000 } } });
 };
